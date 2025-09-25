@@ -1,0 +1,305 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>iPhone 6s Store</title>
+  <style>
+    /* Reset and Base Styles */
+    * { box-sizing: border-box; }
+    body { 
+      margin: 0; 
+      font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen', 'Ubuntu', 'Cantarell', sans-serif; 
+      background: #fff; 
+      color: #1d1d1f; 
+      line-height: 1.4; 
+    }
+    a { text-decoration: none; color: #007AFF; }
+    a:hover { text-decoration: underline; }
+    img { max-width: 100%; height: auto; display: block; }
+    ul { list-style: none; padding: 0; margin: 0; }
+
+    /* Utility Classes */
+    .container { max-width: 1200px; margin: 0 auto; padding: 0 1rem; }
+    .flex { display: flex; }
+    .justify-between { justify-content: space-between; }
+    .items-center { align-items: center; }
+    .space-x-2 > * + * { margin-left: 0.5rem; }
+    .space-x-6 > * + * { margin-left: 1.5rem; }
+    .py-4 { padding-top: 1rem; padding-bottom: 1rem; }
+    .py-12 { padding-top: 3rem; padding-bottom: 3rem; }
+    .py-6 { padding-top: 1.5rem; padding-bottom: 1.5rem; }
+    .px-6 { padding-left: 1.5rem; padding-right: 1.5rem; }
+    .border { border: 1px solid #d2d2d7; }
+    .border-b { border-bottom: 1px solid #d2d2d7; }
+    .border-t { border-top: 1px solid #d2d2d7; }
+    .border-radius-8 { border-radius: 8px; }
+    .text-center { text-align: center; }
+    .font-bold { font-weight: 600; }
+    .text-xl { font-size: 1.25rem; }
+    .text-2xl { font-size: 1.5rem; }
+    .text-3xl { font-size: 1.875rem; }
+    .text-4xl { font-size: 2.25rem; }
+    .mb-4 { margin-bottom: 1rem; }
+    .mb-12 { margin-bottom: 3rem; }
+    .mt-8 { margin-top: 2rem; }
+    .gap-1-5 { gap: 1.5rem; }
+    .p-4 { padding: 1rem; }
+
+    /* Grid */
+    .grid { display: grid; gap: 1.5rem; }
+    @media (min-width: 768px) {
+      .grid-cols-2 { grid-template-columns: repeat(2, 1fr); }
+      .grid-cols-3 { grid-template-columns: repeat(3, 1fr); }
+      .grid-cols-4 { grid-template-columns: repeat(4, 1fr); }
+    }
+    @media (max-width: 768px) {
+      .features .grid {
+        flex-direction: column;   /* Stack vertically on small screens if needed */
+        gap: 2rem !important;
+      }
+    }
+
+    /* Header and Footer */
+    header, footer { background: #f5f5f7; }
+    nav a { margin: 0 0.5rem; color: #007AFF; font-weight: 500; transition: color 0.2s; }
+    nav a:hover { color: #0056b3; text-decoration: none; }
+
+    /* Buttons */
+    button { 
+      cursor: pointer; 
+      background: #007AFF; 
+      color: #fff; 
+      border: none; 
+      padding: 0.75rem 1.5rem; 
+      border-radius: 6px; 
+      font-weight: 500; 
+      transition: background 0.2s; 
+    }
+    button:hover { background: #0056b3; }
+    button:active { background: #004a99; }
+
+    /* Custom styles for WhatsApp button links */
+    .whatsapp-button-link {
+      text-decoration: none; /* Remove underline from the link */
+      display: inline-block; /* Allow button to take its natural width */
+    }
+    .whatsapp-button-link.block {
+      display: block; /* For the pricing button to maintain full width */
+    }
+
+    /* Hero Section */
+    .hero { background: #fff; }
+    .hero h1 { font-size: 2.5rem; font-weight: 700; margin: 0 0 1rem; color: #1d1d1f; }
+    .hero p { font-size: 1.125rem; margin: 0 0 1.5rem; color: #6e6e73; }
+    .hero ul li { margin-bottom: 0.5rem; color: #1d1d1f; }
+    .hero .price { font-size: 1.5rem; font-weight: 700; margin-right: 1rem; }
+
+    /* Features and Specs */
+    h2 { 
+      font-size: 2rem; 
+      font-weight: 600; 
+      color: #1d1d1f; 
+      margin: 0 0 2rem; 
+    }
+
+    h3 { 
+      font-size: 1.25rem; 
+      font-weight: 600; 
+      color: #1d1d1f; 
+      margin: 0 0 0.75rem; 
+    }
+
+    .features img {
+      width: 200px;        /* نفس العرض لكل الصور */
+      height: 200px;       /* نفس الطول لكل الصور */
+      object-fit: cover;   /* يقص الصورة علشان تملأ الإطار */
+      border-radius: 50%;  /* يخليها دائرية (لو عايز شكل دائري زي اللي ظاهر عندك) */
+      display: block;
+      margin: 0 auto 1rem; /* يخلي الصورة في النص */
+    }
+
+    .features .grid {  
+      display: flex !important;          
+      justify-content: center !important;
+      align-items: flex-start; 
+      gap: 8rem !important;     /* Increased spacing between items */
+      flex-wrap: nowrap;                 
+    }
+
+    .features .grid div { 
+      flex: 1 1 0;                       
+      max-width: 280px;                  
+      min-height: 350px;                 
+      background: #f5f5f7;               
+      border-radius: 12px; 
+      padding: 1.5rem; 
+      text-align: center; 
+      transition: box-shadow 0.2s, transform 0.2s;
+    }
+
+    .features .grid div:hover { 
+      box-shadow: 0 4px 12px rgba(0,0,0,0.1); 
+      transform: translateY(-4px); 
+    }
+
+    #specs { background: #f5f5f7; }
+    #specs ul li { padding: 0.5rem 0; border-bottom: 1px solid #e5e5e7; }
+
+    /* Pricing */
+    #pricing .grid div { 
+      background: #f5f5f7; 
+      padding: 2rem; 
+      border-radius: 12px; 
+      box-shadow: 0 4px 12px rgba(0,0,0,0.1); 
+      transition: box-shadow 0.2s, transform 0.2s; 
+      max-width: 300px; 
+      margin: 0 auto; 
+    }
+    #pricing .grid div:hover { 
+      box-shadow: 0 8px 24px rgba(0,0,0,0.15); 
+      transform: translateY(-2px); 
+    }
+    #pricing h3 { font-size: 1.25rem; margin: 0 0 0.75rem; }
+    #pricing p { font-size: 2rem; font-weight: 700; color: #1d1d1f; margin: 0 0 1.5rem; }
+    #pricing button { width: 100%; margin-top: 1rem; }
+
+    /* Footer */
+    footer p { margin: 0.5rem 0; color: #6e6e73; font-size: 0.875rem; }
+
+    /* Responsive */
+    @media (max-width: 768px) {
+      .hero h1 { font-size: 2rem; }
+      nav { display: none; } /* Hide nav on mobile for simplicity */
+      .container { padding: 0 0.75rem; }
+      .grid { grid-template-columns: 1fr; }
+      .features .grid div { padding: 1rem; }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- Header -->
+  <header class="py-4 border-b">
+    <div class="container flex justify-between items-center">
+      <div class="flex items-center space-x-2">
+        <img src="https://upload.wikimedia.org/wikipedia/commons/f/fa/Apple_logo_black.svg" 
+             alt="Apple logo" width="38" height="38" loading="lazy" />
+        
+      </div>
+      <nav class="space-x-6">
+        <a href="#features">Features</a> |
+        <a href="#specs">Specifications</a> |
+        <a href="#pricing">Pricing</a>
+      </nav>
+      <a href="https://wa.me/01099579993" target="_blank" class="whatsapp-button-link">
+        <button aria-label="Buy iPhone 6s now">Buy Now</button>
+      </a>
+    </div>
+  </header>
+
+  <!-- Hero -->
+  <section class="hero py-12">
+    <div class="container grid grid-cols-1 md:grid-cols-2 gap-1-5 items-center">
+      <div>
+        <h1>iPhone 6s</h1>
+        <p>The only thing that's changed is everything.</p>
+        <ul>
+          <li>3D Touch - The next generation of Multi-Touch</li>
+          <li>12MP camera with 4K video</li>
+          <li>A9 chip with 64-bit architecture</li>
+        </ul>
+        <p class="price">4000 EGP
+        <a href="https://wa.me/01099579993" target="_blank" class="whatsapp-button-link">
+          <button aria-label="Shop iPhone 6s now">Shop Now</button>
+        </a>
+      </div>
+      <div class="text-center">
+        <img src="https://i.pinimg.com/1200x/8a/48/0a/8a480ae580a5d6e3ed7c0706042f0fb8.jpg" 
+             alt="iPhone 6s in Silver, front view showcasing the Retina HD display and sleek aluminum design" loading="lazy" />
+      </div>
+    </div>
+  </section>
+
+  <!-- Features -->
+<section id="features" class="py-12">
+  <div class="container">
+    <h2 class="text-center mb-8">Innovative Features</h2>
+    <div class="flex justify-center items-start gap-8">
+      
+      <div class="text-center max-w-xs">
+        <img src="https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEgaP96yuyOybi-8kLCBGyyfFopa0kzIDWqGFnOvlNToMTkAaGeNuIWN4WQPKb7G_YiUQnuM2hsyvrj2B2X7o3E1_4Zf1_T0NZufO7ChJTfMlH0jqVPM4MzggdyGZMUQMjmFBwu_36uF9c_q9P5mRHfv76-5nK-rUT8_iW7gH08KikZFONPyqHFFsf3ZryJZ/s320/30F75C93-E184-4AFB-B1E5-BC07FD0969A9.jpeg"
+             alt="iPhone 6s in Space Gray" loading="lazy" />
+        <h3>3D Touch</h3>
+      </div>
+
+      <div class="text-center max-w-xs">
+        <img src="https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEj-yh_ceqar0ADhVf0T0q8LS0_OaT5aiQqKcTYCCd-A2K-cb9Zcm4spLHad8NikNlq5pJrLCTco-qzVxIx9uFIugrhd1mNXWtLTpeXTMec57c2xvLQAHNqb7V6I6jxAQnNqt-6K6aogJI7z36sGzcAUKVthDAesFtOH-1xZk8AULEZG_McsI8qjeBKbAeum/s344/1F3AB959-90FF-412C-93DA-1AEE5BF2A9F8.jpeg" 
+             alt="iPhone 6s rear view" loading="lazy" />
+        <h3>12MP Camera</h3>
+      </div>
+
+      <div class="text-center max-w-xs">
+        <img src="https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEhiI2q5WplGhxKf5NFT0rlXygplbDGemrrSOM7F6e1PINEckY102smHR9ESbnX17WSPNW-DzcA_2hvsJfTlmm06bhio7XMTTVKA5ib50r6PhS9cH9Mi0xiijrpdGXutx_MDWbeleVmIWm9-BTBSggGsaOcBZWJfAwscWvSqtXphJ5X0CnHl7Wrdw6kPTq2l/s353/7206E910-62DC-481A-9B4D-E8773E2E8154.jpeg" 
+             alt="iPhone 6s in Gold" loading="lazy" />
+        <h3>A9 Chip</h3>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+
+  <!-- Specs -->
+  <section id="specs" class="py-12">
+    <div class="container">
+      <h2 class="text-center">Technical Specifications</h2>
+      <div class="grid grid-cols-1 md:grid-cols-2 gap-1-5">
+        <div class="border border-radius-8 p-4">
+          <h3>Display</h3>
+          <ul>
+            <li>Size: 4.7 inches</li>
+            <li>Resolution: 1334 x 750</li>
+            <li>Technology: Retina HD</li>
+          </ul>
+        </div>
+        <div class="border border-radius-8 p-4">
+          <h3>Camera</h3>
+          <ul>
+            <li>Rear: 12MP with 4K</li>
+            <li>Front: 5MP FaceTime HD</li>
+            <li>Flash: True Tone</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Pricing -->
+  <section id="pricing" class="py-12">
+    <div class="container">
+      <h2 class="text-center">iPhone 6s - 128GB Edition</h2>
+      <div class="grid grid-cols-1">
+        <div>
+          <h3 class="text-center">128GB</h3>
+          <p class="text-center text-2xl">4000 EGP
+          <a href="https://wa.me/01099579993" target="_blank" class="whatsapp-button-link block w-full text-center">
+            <button aria-label="Buy 128GB iPhone 6s">Buy 128GB</button>
+          </a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Footer -->
+  <footer class="py-6 border-t">
+    <div class="container text-center">
+      <img src="https://upload.wikimedia.org/wikipedia/commons/f/fa/Apple_logo_black.svg" 
+           alt="Apple logo" width="24" height="24" loading="lazy" />
+      <p>© 2024 iPhone 6s Store. All rights reserved.</p>
+      <p><a href="#">Privacy Policy</a> | <a href="#">Terms of Service</a></p>
+    </div>
+  </footer>
+
+</body>
+</html>
